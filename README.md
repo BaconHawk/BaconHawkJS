@@ -15,6 +15,7 @@ Made By Bacon_Space &amp; NiteHawk
 8. Enjoy!
 
 # Support
-For support join the official BaconHawkJS discord!
+For support join the official [BaconHawkJS discord](https://discord.gg/gZnuV4N)!
+You can also contact us via E Mail at __baconhawkjs@gmail.com__
 
 # BaconHAWK
