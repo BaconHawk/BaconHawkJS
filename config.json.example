@@ -1,0 +1,4 @@
+{
+"ownerID": "your_ID_here", //This is used for the eval command
+"prefix": "!" //Prefix for your bot
+}
