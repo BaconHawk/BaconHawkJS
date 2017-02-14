@@ -2,26 +2,26 @@
 
 var chalk = require("chalk");
 var logError = chalk.red('ERR!') + chalk.white
-var log = console.log
+var bhlog = console.log
 var version = "v0.0.1"
 var copyr = '© BaconHawk 2017'
 
 try{
 	var Discord = require("discord.js");
 } catch(e) {
-	log(logError(e.stack));
-	log(logError(process.version));
-	log('Please run npm install and make sure it passes with NO errors!');
+	bhlog(logError(e.stack));
+	bhlog(logError(process.version));
+	bhlog('Please run npm install and make sure it passes with NO errors!');
 	process.exit();
 }
 
-log('Starting BaconHawkJS\nBaconHawkJS version: ' + version + '\nDiscordJS version: v' + Discord.version);
+bhlog('Starting BaconHawkJS\nBaconHawkJS version: ' + version + '\nDiscordJS version: v' + Discord.version);
 
 //Get Auth Data from Auth.json
 try{
 	var AuthData = require("./auth.json");
 } catch(e) {
-	log(logError('Please create an auth.json file in the main directory based off of the auth.json.example file!\n' + e.stack));
+	bhlog(logError('Please create an auth.json file in the main directory based off of the auth.json.example file!\n' + e.stack));
 	process.exit();
 }
 
@@ -29,7 +29,7 @@ try{
 try{
 	var Config = require("./config.json");
 } catch(e) {
-	log(logError('Please create an config.json file in the main directory based off of the config.json.example file!\n' + e.stack));
+	bhlog(logError('Please create an config.json file in the main directory based off of the config.json.example file!\n' + e.stack));
 	process.exit();
 }
 
@@ -49,7 +49,7 @@ function checkForCommand(msg) {
 		var cmdTxt = msg.content.split(" ")[0].substring(Config.prefix.length);
 		var suffix = msg.content.substring(cmdTxt.length+Config.prefix.length+1);
 		
-		log('Running ' + cmdTxt + `, from ${msg.author.id}, as a command!`);
+		bhlog('Running ' + cmdTxt + `, from ${msg.author.id}, as a command!`);
 		
 		var cmd = commands[cmdTxt];
 		
@@ -69,5 +69,5 @@ bot.on("message", msg => checkForCommand(msg, false));
 if(AuthData.bot_token){
 	bot.login(AuthData.bot_token);
 } else{
-	log(logError('Please Provide a bot token in auth.json'));
+	bhlog(logError('Please Provide a bot token in auth.json'));
 }
