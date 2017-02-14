@@ -1,8 +1,31 @@
 {
+  "name": "baconhawkjs",
+  "version": "1.0.0",
+  "description": "BaconHawkJS is a new Frame Work for DiscordJS. BaconHawkJS is currently a Work In Progress project and will be updated frequently!",
+  "main": "bot.js",
   "dependencies": {
     "chalk": "^1.1.3",
     "discord.js": "^11.0.0",
-    "opusscript": "0.0.1",
+    "opusscript": "^0.0.1",
     "uws": "^0.12.0"
-  }
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BaconHawk/BaconHawkJS.git"
+  },
+  "keywords": [
+    "baconhawk",
+    "baconhawkjs",
+    "discord-framework"
+  ],
+  "author": "Bacon_Space & NITEHAWK",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/BaconHawk/BaconHawkJS/issues"
+  },
+  "homepage": "https://github.com/BaconHawk/BaconHawkJS#readme"
 }
