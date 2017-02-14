@@ -3,7 +3,7 @@
 var chalk = require("chalk");
 var logError = chalk.red('ERR!') + chalk.white
 var log = console.log
-var version = "v0.0.1"
+var copyr = '© BaconHawk 2017'
 
 try{
 	var Discord = require("discord.js");
