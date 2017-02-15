@@ -5,12 +5,14 @@ const logError = chalk.red('ERR!') + chalk.white
 const log = console.log
 const Package = require("./package.json");
 const Discord = require("discord.js");
+let AuthData; //Will be removed in future update
+let Config;
 
 log('Starting BaconHawkJS\nBaconHawkJS version: ' + Package.version + '\nDiscordJS version: v' + Discord.version);
 
 //Get Auth Data from Auth.json
 try{
-	const AuthData = require("./auth.json");
+	AuthData = require("./auth.json");
 } catch(e) {
 	log(logError('Please create an auth.json file in the main directory based off of the auth.json.example file!\n' + e.stack));
 	process.exit();
@@ -18,7 +20,7 @@ try{
 
 //Get Config Data from config.json
 try{
-	const Config = require("./config.json");
+	Config = require("./config.json");
 } catch(e) {
 	log(logError('Please create an config.json file in the main directory based off of the config.json.example file!\n' + e.stack));
 	process.exit();
@@ -62,7 +64,7 @@ function checkForCommand(msg) {
 }
 
 bot.on("message", msg => checkForCommand(msg, false));
-bot.on("ready", function() {log(`Your bot is ready and running on \n ${bot.quilds.size} servers \n with ${bot.channels.size} channels \n for ${bot.users.filter(user => !user.bot).size} users!`)});
+bot.on("ready", function() {log(`Your bot is ready and running on \n ${bot.guilds.size} servers \n with ${bot.channels.size} channels \n for ${bot.users.filter(user => !user.bot).size} users!`)});
 
 if(AuthData.bot_token){
 	bot.login(AuthData.bot_token);
