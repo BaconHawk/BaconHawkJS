@@ -14,6 +14,20 @@ Made By Bacon_Space &amp; NiteHawk
 7. If no errors appear than the bot was set-up correctly
 8. Enjoy!
 
+# Modules
+Many of you may be wondering what modules are, in BaconHawkJS modules are .js files that are located in a folder inside the *modules* folder. Each module, or .js file, adds its own unique command to the bot that is auto-loaded into the bot with the *modules.js* file. The frame work comes pre installed with a few modules for you to look off. There are sub categories inside the main *modules* folder for you to nicely organize your modules into folders! An example *{module}.js* file will be below.
+
+```javascript
+exports.module = "<command_name>";
+
+exports.<command_name> = {
+  run: function(bot,suffix,msg) {
+    //your code here
+  }
+}
+
+```
+
 # Support
 For support join the official [BaconHawkJS discord](https://discord.gg/gZnuV4N)!
 You can also contact us via E Mail at __baconhawkjs@gmail.com__
