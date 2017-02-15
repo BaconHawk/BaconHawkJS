@@ -4,15 +4,7 @@ const chalk = require("chalk");
 const logError = chalk.red('ERR!') + chalk.white
 const log = console.log
 const Package = require("./package.json");
-
-try{
-	const Discord = require("discord.js");
-} catch(e) {
-	log(logError(e.stack));
-	log(logError(process.version));
-	log('Please run npm install and make sure it passes with NO errors!');
-	process.exit();
-}
+const Discord = require("discord.js");
 
 log('Starting BaconHawkJS\nBaconHawkJS version: ' + Package.version + '\nDiscordJS version: v' + Discord.version);
 
