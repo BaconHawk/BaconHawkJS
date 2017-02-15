@@ -1,57 +1,62 @@
 //BaconHawkJS Bot Frame Work by Bacon_Space & NiteHawk Please refer to https://github.com/BaconHawk/BaconHawkJS for help!
 
-var chalk = require("chalk");
-var logError = chalk.red('ERR!') + chalk.white
-var bhlog = console.log
-var version = "v0.0.1"
-var copyr = '© BaconHawk 2017'
+const chalk = require("chalk");
+const logError = chalk.red('ERR!') + chalk.white
+const log = console.log
+const Package = require("./package.json");
 
 try{
-	var Discord = require("discord.js");
+	const Discord = require("discord.js");
 } catch(e) {
-	bhlog(logError(e.stack));
-	bhlog(logError(process.version));
-	bhlog('Please run npm install and make sure it passes with NO errors!');
+	log(logError(e.stack));
+	log(logError(process.version));
+	log('Please run npm install and make sure it passes with NO errors!');
 	process.exit();
 }
 
-bhlog('Starting BaconHawkJS\nBaconHawkJS version: ' + version + '\nDiscordJS version: v' + Discord.version);
+log('Starting BaconHawkJS\nBaconHawkJS version: ' + Package.version + '\nDiscordJS version: v' + Discord.version);
 
 //Get Auth Data from Auth.json
 try{
-	var AuthData = require("./auth.json");
+	const AuthData = require("./auth.json");
 } catch(e) {
-	bhlog(logError('Please create an auth.json file in the main directory based off of the auth.json.example file!\n' + e.stack));
+	log(logError('Please create an auth.json file in the main directory based off of the auth.json.example file!\n' + e.stack));
 	process.exit();
 }
 
 //Get Config Data from config.json
 try{
-	var Config = require("./config.json");
+	const Config = require("./config.json");
 } catch(e) {
-	bhlog(logError('Please create an config.json file in the main directory based off of the config.json.example file!\n' + e.stack));
+	log(logError('Please create an config.json file in the main directory based off of the config.json.example file!\n' + e.stack));
 	process.exit();
 }
 
-var commands = {
+let commands = {
 	"ping": {
 		run: function(bot,suffix,msg) {
 			msg.reply('Pong!');
 		}
+	},
+	
+	"about": {
+		run: function(bot,suffix,msg) {
+			msg.reply('Feel Free To Check Out My New Framework Right Here https://github.com/BaconHawk/BaconHawkJS/');
+		}
 	}
 }
 
-var bot = new Discord.Client();
+const bot = new Discord.Client();
 
 function checkForCommand(msg) {
 	if(msg.author.id != bot.user.id && msg.content.startsWith(Config.prefix)){
 		
-		var cmdTxt = msg.content.split(" ")[0].substring(Config.prefix.length);
-		var suffix = msg.content.substring(cmdTxt.length+Config.prefix.length+1);
+		let cmdTxt = msg.content.split(" ")[0].substring(Config.prefix.length);
+		let suffix = msg.content.substring(cmdTxt.length+Config.prefix.length+1);
 		
-		bhlog('Running ' + cmdTxt + `, from ${msg.author.id}, as a command!`);
+		log('Running ' + cmdTxt + `, from ${msg.author.id}, as a command!`);
 		
-		var cmd = commands[cmdTxt];
+		let cmd = commands[cmdTxt];
 		
 		if(cmd){
 			try{
@@ -65,9 +70,10 @@ function checkForCommand(msg) {
 }
 
 bot.on("message", msg => checkForCommand(msg, false));
+bot.on("ready", function() {log(`Your bot is ready and running on \n ${bot.quilds.size} servers \n with ${bot.channels.size} channels \n for ${bot.users.filter(user => !user.bot).size} users!`)});
 
 if(AuthData.bot_token){
 	bot.login(AuthData.bot_token);
 } else{
-	bhlog(logError('Please Provide a bot token in auth.json'));
+	log(logError('Please Provide a bot token in auth.json'));
 }
