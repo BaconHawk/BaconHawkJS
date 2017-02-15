@@ -2,7 +2,7 @@
 
 const chalk = require('chalk');
 const logError = chalk.red('ERR!') + chalk.white
-const bhlog = console.log //DONT REMOVE NITEHAWK
+const bhlog = console.log
 const Package = require('./package.json');
 const Discord = require('discord.js');
 let AuthData; //will be removed in coming versions
@@ -26,19 +26,7 @@ try{
 	process.exit();
 }
 
-let commands = {
-	"ping": {
-		run: function(bot,suffix,msg) {
-			msg.reply('Pong!');
-		}
-	},
-	
-	"about": {
-		run: function(bot,suffix,msg) {
-			msg.reply('Feel Free To Check Out My New Framework Right Here https://github.com/BaconHawk/BaconHawkJS/');
-		}
-	}
-}
+let commands = {};
 
 const bot = new Discord.Client();
 
@@ -48,7 +36,7 @@ function checkForCommand(msg) {
 		let cmdTxt = msg.content.split(' ')[0].substring(Config.prefix.length);
 		let suffix = msg.content.substring(cmdTxt.length+Config.prefix.length+1);
 		
-		bhlog(`Running ${cmdTxt}, from ${msg.author.id}, as a command!`);
+		log(`Running ${cmdTxt}, from ${msg.author.id}, as a command!`);
 		
 		let cmd = commands[cmdTxt];
 		
@@ -64,7 +52,18 @@ function checkForCommand(msg) {
 }
 
 bot.on('message', msg => checkForCommand(msg));
-bot.on('ready', () => {log('Your bot is ready and running on ' + chalk.blue(`${bot.guilds.size}`) + ' servers with ' + chalk.blue(`${bot.channels.size}`) + ' channels for ' + chalk.blue(`${bot.users.filter(user => !user.bot).size}`) + ' users!')});
+bot.on('ready', () => {
+	bhlog('Your bot is ready and running on ' + chalk.blue(`${bot.guilds.size}`) + ' servers with ' + chalk.blue(`${bot.channels.size}`) + ' channels for ' + chalk.blue(`${bot.users.filter(user => !user.bot).size}`) + ' users!')
+	require("./modules.js").init();
+});
+
+exports.addCommand = function(commandName, commandObject){
+    try {
+        commands[commandName] = commandObject;
+    } catch(e){
+        bhlog(e);
+    }
+}
 
 if(AuthData.bot_token){
 	bot.login(AuthData.bot_token);
