@@ -1,6 +1,6 @@
 {
   "name": "baconhawkjs",
-  "version": "1.0.0",
+  "version": "0.0.3",
   "description": "BaconHawkJS is a new Frame Work for DiscordJS. BaconHawkJS is currently a Work In Progress project and will be updated frequently!",
   "main": "bot.js",
   "dependencies": {
