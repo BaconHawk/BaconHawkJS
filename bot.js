@@ -63,7 +63,7 @@ function checkForCommand(msg) {
 	}
 }
 
-bot.on("message", msg => checkForCommand(msg, false));
+bot.on("message", msg => checkForCommand(msg));
 bot.on("ready", function() {log(`Your bot is ready and running on \n ${bot.guilds.size} servers \n with ${bot.channels.size} channels \n for ${bot.users.filter(user => !user.bot).size} users!`)});
 
 if(AuthData.bot_token){
