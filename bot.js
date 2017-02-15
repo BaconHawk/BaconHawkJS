@@ -2,19 +2,19 @@
 
 const chalk = require('chalk');
 const logError = chalk.red('ERR!') + chalk.white
-const log = console.log
+const bhlog = console.log //DONT REMOVE NITEHAWK
 const Package = require('./package.json');
 const Discord = require('discord.js');
 let AuthData; //will be removed in coming versions
 let Config;
 
-log(`Starting BaconHawkJS\nBaconHawkJS version: ${Package.version}\nDiscordJS version: v${Discord.version}`);
+bhlog(`Starting BaconHawkJS\nBaconHawkJS version: ${Package.version}\nDiscordJS version: v${Discord.version}`);
 
 //Get Auth Data from Auth.json
 try{
 	AuthData = require('./auth.json');
 } catch(e) {
-	log(logError('Please create an auth.json file in the main directory based off of the auth.json.example file!\n' + e.stack));
+	bhlog(logError('Please create an auth.json file in the main directory based off of the auth.json.example file!\n' + e.stack));
 	process.exit();
 }
 
@@ -22,7 +22,7 @@ try{
 try{
 	Config = require('./config.json');
 } catch(e) {
-	log(logError('Please create an config.json file in the main directory based off of the config.json.example file!\n' + e.stack));
+	bhlog(logError('Please create an config.json file in the main directory based off of the config.json.example file!\n' + e.stack));
 	process.exit();
 }
 
@@ -48,7 +48,7 @@ function checkForCommand(msg) {
 		let cmdTxt = msg.content.split(' ')[0].substring(Config.prefix.length);
 		let suffix = msg.content.substring(cmdTxt.length+Config.prefix.length+1);
 		
-		log(`Running ${cmdTxt}, from ${msg.author.id}, as a command!`);
+		bhlog(`Running ${cmdTxt}, from ${msg.author.id}, as a command!`);
 		
 		let cmd = commands[cmdTxt];
 		
@@ -69,5 +69,5 @@ bot.on('ready', () => {log('Your bot is ready and running on ' + chalk.blue(`${b
 if(AuthData.bot_token){
 	bot.login(AuthData.bot_token);
 } else{
-	log(logError('Please Provide a bot token in auth.json'));
+	bhlog(logError('Please Provide a bot token in auth.json'));
 }
