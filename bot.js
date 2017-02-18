@@ -8,7 +8,7 @@ const Discord = require('discord.js');
 let AuthData; //will be removed in coming versions
 let Config;
 
-log(`Starting BaconHawkJS\nBaconHawkJS version: ${Package.version}\nDiscordJS version: v${Discord.version}`);
+bhlog(`Starting BaconHawkJS\nBaconHawkJS version: ${Package.version}\nDiscordJS version: v${Discord.version}`);
 
 //Get Config Data from config.json
 try{
@@ -58,7 +58,7 @@ exports.addCommand = function(commandName, commandObject){
     }
 }
 
-if(AuthData.bot_token){
+if(Config.bot_token){
 	bot.login(Config.bot_token);
 } else{
 	bhlog(logError('Please Provide a bot token in auth.json'));
