@@ -1,7 +1,7 @@
 //BaconHawkJS Bot Frame Work by Bacon_Space & NiteHawk Please refer to https://github.com/BaconHawk/BaconHawkJS for help!
 
 const chalk = require('chalk');
-const logError = chalk.red('ERR!');
+const logError = chalk.red('ERR!') + chalk.white;
 const bhlog = console.log;
 const Package = require('./package.json');
 const Discord = require('discord.js');
