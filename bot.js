@@ -1,7 +1,7 @@
 //BaconHawkJS Bot Frame Work by Bacon_Space & NiteHawk Please refer to https://github.com/BaconHawk/BaconHawkJS for help!
 
 const chalk = require('chalk');
-const logError = chalk.red('ERR!') + chalk.white;
+const logError = chalk.red('ERR!');
 const bhlog = console.log;
 const Package = require('./package.json');
 const Discord = require('discord.js');
@@ -14,7 +14,7 @@ bhlog(`Starting BaconHawkJS\nBaconHawkJS version: ${Package.version}\nDiscordJS 
 try{
 	Config = require('./config.json');
 } catch(e) {
-	bhlog(logError('Please create an config.json file in the main directory based off of the config.json.example file!\n' + e.stack));
+	bhlog(logError + ('Please create an config.json file in the main directory based off of the config.json.example file!\n' + e.stack));
 	process.exit();
 }
 
@@ -54,12 +54,12 @@ exports.addCommand = function(commandName, commandObject){
     try {
         commands[commandName] = commandObject;
     } catch(err){
-        bhlog(err);
+        bhlog(logError + err);
     }
 }
 
 if(Config.bot_token){
 	bot.login(Config.bot_token);
 } else{
-	bhlog(logError('Please Provide a bot token in auth.json'));
+	bhlog(logError + ('Please Provide a bot token in auth.json'));
 }
