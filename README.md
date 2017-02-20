@@ -32,6 +32,4 @@ exports.<command_name> = {
 For support join the official [BaconHawkJS discord](https://discord.gg/gZnuV4N)!
 You can also contact us via E Mail at __baconhawkjs@gmail.com__
 
-<iframe src="https://discordapp.com/widget?id=280556103694155796&theme=dark" width="350" height="500" allowtransparency="true" frameborder="0"></iframe>
-
 # BaconHAWK
