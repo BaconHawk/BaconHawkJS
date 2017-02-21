@@ -1,13 +1,13 @@
 exports.command = 'ping';
 
 const Discord = require('discord.js');
-
+const baconhawk = "BaconHawkJS"
 exports.ping = {
 	run: function(bot,suffix,msg) {
 		const embed = new Discord.RichEmbed()
 			.setTitle('Pong!')
 			.setDescription()
-			.setFooter('BaconHawkJS')
+			.setFooter(baconhawk)
 			.setTimestamp()
 			.setColor(0xaa0000)
 		msg.channel.sendMessage(embed)
