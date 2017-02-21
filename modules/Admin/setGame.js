@@ -10,7 +10,7 @@ exports.setGame = {
                 const embed = new Discord.RichEmbed()
                 msg.channel.sendEmbed(embed.setTitle('Set Game').addField('Error:', 'No Game Provided!').setFooter('BaconHawkJS').setColor([255,0,0]).setTimestamp());
             } else {
-                bot.user.setGame(suffix, 'https://twitch.tv/BaconHawkJS');
+                bot.user.setGame(suffix);
                 const embed = new Discord.RichEmbed()
                     .setTitle('Set Game')
                     .addField('Game Set!', `New Game: ${suffix}`)
