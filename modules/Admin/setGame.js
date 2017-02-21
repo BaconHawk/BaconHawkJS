@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 const Config = require('../../config.json');
-
+const baconhawk = 'BaconHawkJS'
 exports.command = 'setGame';
 
 exports.setGame = {
@@ -14,7 +14,7 @@ exports.setGame = {
                 const embed = new Discord.RichEmbed()
                     .setTitle('Set Game')
                     .addField('Game Set!', `New Game: ${suffix}`)
-                    .setFooter('BaconHawkJS')
+                    .setFooter(baconhawk)
                     .setTimestamp()
                     .setColor([50,50,50])
                 msg.channel.sendEmbed(embed);
@@ -25,7 +25,7 @@ exports.setGame = {
                 .addField('Error:', 'No Permission!')
                 .setColor([255,0,0])
                 .setTimestamp()
-                .setFooter('BaconHawkJS')
+                .setFooter(baconhawk)
             msg.channel.sendEmbed(embed);
         }
     }
