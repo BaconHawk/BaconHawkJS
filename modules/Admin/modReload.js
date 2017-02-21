@@ -18,7 +18,7 @@ exports.modReload = {
 			msg.channel.sendEmbed(embed)
 		} else {
 			const embed = new Discord.RichEmbed()
-			msg.channel.sendEmbed(embed.setTimestamp().setTitle('Module Reload').addField('Error:', 'No Permission!').setColor(0xff0000).setFooter('BaconHawkJS'));
+			msg.channel.sendEmbed(embed.setTimestamp().setTitle('Module Reload').addField('Error:', 'No Permission!').setColor(0xff0000).setFooter(baconhawk));
 		}
 	}
 }
