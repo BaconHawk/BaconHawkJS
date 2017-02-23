@@ -1,5 +1,5 @@
 {
 "ownerID": "your_ID_here", //This is used for the eval command
-"prefix": "!" //Prefix for your bot
+"prefix": "!", //Prefix for your bot
 "bot_token": "bot_token_here" //Used to log in to the bot
 }
