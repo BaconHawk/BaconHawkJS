@@ -36,7 +36,7 @@ function checkForCommand(msg) {
 			try{
 				cmd.run(bot,suffix,msg);
 			} catch(e) {
-				log(logError + e.stack);
+				bhlog(logError + e.stack);
 				var msgTxt = `Command ${cmdTxt} was unable to run!`;
 				msg.channel.sendMessage(msgTxt);
 			}
