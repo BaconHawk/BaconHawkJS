@@ -1,4 +1,5 @@
 # BaconHawkJS
+# Join Our Discord <a href="https://discord.gg/dnSEF72"><img src="https://discordapp.com/api/guilds/280556103694155796/widget.png?style=banner2" alt="BaconHawk's server"></a>
 BaconHawkJS is a new Frame Work for DiscordJS. BaconHawkJS is currently a Work In Progress project and will be updated frequently!
 
 
