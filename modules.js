@@ -2,7 +2,7 @@ const Discord = require('./bot.js');
 const fs = require('fs');
 const path = require('path');
 const chalk = require('chalk');
-
+const bhlog = console.log
 exports.init = function(){
     load_modules();
 };
@@ -65,11 +65,11 @@ function load_modules() {
 						commandCount++;
 				}
 			} catch(err) {
-				console.log(chalk.red('ERR!') + ` The module ${moduleFile[j]} is set-up incorrectly!\n${err.stack}`);
+				bhlog(chalk.red('ERR!') + ` The module ${moduleFile[j]} is set-up incorrectly!\n${err.stack}`);
 			}
 		}
 	}
 	exports.commandCount = commandCount;
-	console.log(chalk.blue('Success!') + ` ${commandCount} modules have been loaded!`)
+	bhlog(chalk.blue('Success!') + ` ${commandCount} modules have been loaded!`)
 }
 
