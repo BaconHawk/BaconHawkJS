@@ -1,12 +1,15 @@
 //BaconHawkJS Bot Frame Work by Bacon_Space & NiteHawk Please refer to https://github.com/BaconHawk/BaconHawkJS for help!
-
+const Discord = require('discord.js');
+const bot = new Discord.Client();
 const chalk = require('chalk');
 const logError = chalk.red('ERR!');
 const bhlog = console.log;
 const Package = require('./package.json');
-const Discord = require('discord.js');
-let AuthData; //will be removed in coming versions
+const XPDB= require('xpdb');
+const db = bot.db = new XPDB('./guildDB');
 let Config;
+
+
 
 bhlog(`Starting BaconHawkJS\nBaconHawkJS version: ${Package.version}\nDiscordJS version: v${Discord.version}`);
 
@@ -18,17 +21,23 @@ try{
 	process.exit();
 }
 
+
+
+
+
+//dont change this at all
 let commands = {};
 
-const bot = new Discord.Client();
+//Feel free to change this
 
 function checkForCommand(msg) {
-	if(msg.author.id != bot.user.id && msg.content.startsWith(Config.prefix)){
+	let prefix = bot.prefixes[msg.guild.id] || Config.prefix;
+	if(msg.author.id != bot.user.id && msg.content.startsWith(prefix)){
 		
-		let cmdTxt = msg.content.split(' ')[0].substring(Config.prefix.length);
-		let suffix = msg.content.substring(cmdTxt.length+Config.prefix.length+1);
+		let cmdTxt = msg.content.split(' ')[0].substring(prefix.length);
+		let suffix = msg.content.substring(cmdTxt.length+prefix.length+1);
 		
-		bhlog(`Running ${Config.prefix}${cmdTxt}, from ${msg.author.id}, as a command!`);
+		bhlog(`Running ${prefix}${cmdTxt}, from ${msg.author.id}, as a command!`);
 		
 		let cmd = commands[cmdTxt];
 		
@@ -36,7 +45,7 @@ function checkForCommand(msg) {
 			try{
 				cmd.run(bot,suffix,msg);
 			} catch(e) {
-				bhlog(logError + e.stack);
+				log(logError + e.stack);
 				var msgTxt = `Command ${cmdTxt} was unable to run!`;
 				msg.channel.sendMessage(msgTxt);
 			}
@@ -48,7 +57,12 @@ bot.on('message', msg => checkForCommand(msg));
 bot.on('ready', () => {
 	bhlog('Your bot is ready and running on ' + chalk.blue(`${bot.guilds.size}`) + ' servers with ' + chalk.blue(`${bot.channels.size}`) + ' channels for ' + chalk.blue(`${bot.users.filter(user => !user.bot).size}`) + ' users!')
 	require("./modules.js").init();
+	bot.db.get('prefixes').then(prefixes => bot.prefixes = prefixes || {}).catch(err => {
+    	console.error(err);
+    	process.exit(1);
+	});
 });
+
 
 exports.addCommand = function(commandName, commandObject){
     try {
@@ -63,3 +77,12 @@ if(Config.bot_token){
 } else{
 	bhlog(logError + ('Please Provide a bot token in auth.json'));
 }
+
+process.on('uncaughtException', (err) => {
+    let errorMsg = err.stack.replace(new RegExp(`${__dirname}\/`, 'g'), './');
+    console.error(errorMsg);
+});
+
+process.on('unhandledRejection', err => {
+    console.error('Uncaught Promise Error: \n' + err.stack);
+});
