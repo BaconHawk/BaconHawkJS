@@ -4,12 +4,11 @@
   "description": "BaconHawkJS is a new Frame Work for DiscordJS. BaconHawkJS is currently a Work In Progress project and will be updated frequently!",
   "main": "bot.js",
   "dependencies": {
-    "canvas": "^1.6.3",
     "chalk": "^1.1.3",
     "discord.js": "^11.0.0",
     "opusscript": "^0.0.1",
     "request": "^2.79.0",
-    "uws": "^0.12.0",
+    "uws": "^0.14.1",
     "xpdb": "^1.0.1"
   },
   "devDependencies": {},
