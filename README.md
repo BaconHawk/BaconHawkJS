@@ -30,7 +30,7 @@ exports.<command_name> = {
 ```
 
 # Support
-For support join the official [BaconHawkJS discord](https://discord.gg/gZnuV4N)!
+For support join the official <a href="https://discord.gg/dnSEF72"><img src="https://discordapp.com/api/guilds/280556103694155796/widget.png?style=banner2" alt="BaconHawk's server"></a>
 You can also contact us via E Mail at __baconhawkjs@gmail.com__
 
 # BaconHAWK
